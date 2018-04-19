@@ -1,0 +1,29 @@
+Configuration:  
+  status: debug
+  strict: true
+  name: testspeed
+  properties:
+    property:
+      - name: filename
+        value: ./tmp/logs/log4j2.log    
+  Appenders:  
+    RandomAccessFile:  #输出到控制台  
+      name: INFO
+      filename: ${filename}
+      immediateflush: false
+      append: true
+      PatternLayout:  
+        pattern: "%d %p %C [%t] %m%n"  
+  
+  Loggers:  
+  #  Root:  
+  #    level: debug
+  #    additivity: false  
+  #    AppenderRef:  
+  #      - ref: INFO    
+    asyncRoot:
+      level: debug
+      additivity: false
+      includeLocation: true
+      bufferSize: 512
+      appenderRef: INFO
